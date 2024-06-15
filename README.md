@@ -1,5 +1,7 @@
 # Kafka-Mini-Project
 
+This is a docker project that creates a kafka single node cluster in a docker container with a zookeeper. And also creates a 2 container docker application with a kafka producer and consumer that interact with one another.
+
 ## Project Structure
 ```
 .
