@@ -12,11 +12,10 @@ SLEEP_TIME = 1 / TRANSACTIONS_PER_SECOND
 if __name__ == "__main__":
     producer = KafkaProducer(
         bootstrap_servers=KAFKA_BROKER_URL,
-        value_serializer=lambda value: json.dumps(value).encode(),
+        value_serializer=lambda value: json.dumps(value).encode()
     )
     while True:
         transaction = create_random_transaction()
-        message = json.dumps(transaction)
-        producer.send("queueing.transactions", value = message.encode())
-
+        producer.send(TRANSACTIONS_TOPIC, value=transaction)
+        print(transaction)
         sleep(SLEEP_TIME)
